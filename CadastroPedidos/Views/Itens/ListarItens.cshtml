@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CadastroPedidos.Models.Item>
+
+<form id="formItemPedido">
+    <div class="form-horizontal">
+        <h4>Itens</h4>
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2">Quantidade</label>
+            <div class="col-md-10">
+                <input type="text" id="Quantidade" name="Quantidade" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Produto</label>
+            <div class="col-md-10">
+                <input type="text" id="Produto" name="Produto" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Valor Unitário</label>
+            <div class="col-md-10">
+                <input type="text" id="ValorUnitario" name="ValorUnitario" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a href="#" onclick="SalvarItens();">Gravar Itens</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<input type="hidden" id="idPedido" value="@ViewBag.Pedido" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produto)
+            <th>
+                @Html.DisplayNameFor(model => model.ValorUnitario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var linha = "tr" + item.Id;
+
+        <tr id="@linha">
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorUnitario)
+            </td>
+            <td readonly>
+                @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                <a href="#" onclick="ExcluirItem(@item.Id);">Excluir</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
