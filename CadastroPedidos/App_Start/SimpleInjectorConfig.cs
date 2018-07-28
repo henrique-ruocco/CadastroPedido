@@ -32,7 +32,7 @@ namespace CadastroPedidos.App_Start
 
     public interface IPedidoService
     {
-        bool ExcluirItem(int id);
+        bool ExcluirItem(int id, int idItem);
     }
 
     public static class DependencyModule

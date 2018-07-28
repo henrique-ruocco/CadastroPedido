@@ -8,31 +8,31 @@ namespace CadastroPedidos.Controllers
 {
     public class ItensController : BaseController
     {
-        private readonly DBContext db;
+        private readonly DBContext _db;
         private readonly IPedidoService _pedidoService;
 
         public ItensController(DBContext db, IPedidoService pedidoService)
         {
-            this.db = db;
+            _db = db;
             _pedidoService = pedidoService;
         }
 
         // GET: Item
         public ActionResult ListarItens(int id)
         {
-            var lista = db.Itens.Where(m => m.Pedido.Id == id);
+            var lista = _db.Itens.Where(m => m.Pedido.Id == id);
             ViewBag.Pedido = id;
             return PartialView(lista);
         }
 
         public ActionResult SalvarItens(int quantidade, string produto, decimal valorUnitario, int idPedido)
         {
-            var item = new Item()
+            var item = new Item
             {
                 Quantidade = quantidade,
                 Produto = produto,
                 ValorUnitario = valorUnitario,
-                Pedido = db.Pedidos.Find(idPedido)
+                Pedido = _db.Pedidos.Find(idPedido)
             };
 
             item.Quantidade = 10;
@@ -40,16 +40,16 @@ namespace CadastroPedidos.Controllers
             // Escrever o metodo correto. "factory method."
             var i = Item.Novo(1, 2);
 
-            db.Itens.Add(item);
-            db.SaveChanges();
+            _db.Itens.Add(item);
+            _db.SaveChanges();
 
             return Result(item.Id);
         }
 
         [HttpPost]
-        public ActionResult Excluir(int id)
+        public ActionResult Excluir(int id, int idItem)
         {
-            return Result(_pedidoService.ExcluirItem(id));
+            return Result(_pedidoService.ExcluirItem(id, idItem));
         }
     }
 
@@ -78,34 +78,11 @@ namespace CadastroPedidos.Controllers
     {
         protected readonly DBContext Db;
 
-        public Service(DBContext db)
+        protected Service(DBContext db)
         {
             Db = db;
         }
     }
 
     // Colocar na pasta Services e a interface na pasta interface ali
-    public class PedidoService : Service, IPedidoService
-    {
-        public PedidoService(DBContext db)
-            : base(db)
-        {
-        }
-
-        public bool ExcluirItem(int id)
-        {
-            var item = Db.Itens.Find(id);
-
-            var result = false;
-
-            if (item != null)
-            {
-                Db.Itens.Remove(item);
-                Db.SaveChanges();
-                result = true;
-            }
-
-            return result;
-        }
-    }
 }
