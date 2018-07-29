@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroPedidos", "CadastroPedidos\CadastroPedidos.csproj", "{040107A9-53A5-4134-AC28-D43A3740421C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroPedidosCore", "CadastroPedidosCore\CadastroPedidosCore.csproj", "{3C554CB4-3422-4A39-9CBD-C1FE34924112}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{040107A9-53A5-4134-AC28-D43A3740421C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{040107A9-53A5-4134-AC28-D43A3740421C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{040107A9-53A5-4134-AC28-D43A3740421C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C554CB4-3422-4A39-9CBD-C1FE34924112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C554CB4-3422-4A39-9CBD-C1FE34924112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C554CB4-3422-4A39-9CBD-C1FE34924112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C554CB4-3422-4A39-9CBD-C1FE34924112}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

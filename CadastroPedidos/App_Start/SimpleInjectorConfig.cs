@@ -1,16 +1,12 @@
-﻿using CadastroPedidos.Context;
-using CadastroPedidos.Controllers;
+﻿using System.Reflection;
+using System.Web.Mvc;
+using CadastroPedidosCore.Context;
+using CadastroPedidosCore.Interfaces;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Web;
-using System.Web.Mvc;
 
-namespace CadastroPedidos.App_Start
+namespace CadastroPedidos
 {
     public class SimpleInjectorConfig
     {
@@ -20,7 +16,7 @@ namespace CadastroPedidos.App_Start
 
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
-            DependencyModule.RegisterDependencies(container);
+            container.RegisterDependencies();
 
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
 
@@ -30,10 +26,7 @@ namespace CadastroPedidos.App_Start
         }
     }
 
-    public interface IPedidoService
-    {
-        bool ExcluirItem(int id, int idItem);
-    }
+    
 
     public static class DependencyModule
     {
@@ -52,7 +45,7 @@ namespace CadastroPedidos.App_Start
 
         private static void RegisterServices(this Container container)
         {
-            container.Register<IPedidoService, PedidoService>(Lifestyle);
+            //container.Register<IPedidoService, PedidoService>(Lifestyle);
         }
     }
 }

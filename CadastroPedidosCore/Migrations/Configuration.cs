@@ -1,10 +1,10 @@
-using CadastroPedidos.Models;
+using System.Data.Entity.Migrations;
+using CadastroPedidosCore.Context;
+using CadastroPedidosCore.Context;
 
-namespace CadastroPedidos.Migrations
+namespace CadastroPedidosCore.Migrations
 {
-    using System.Data.Entity.Migrations;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<CadastroPedidos.Context.DBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DBContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace CadastroPedidos.Migrations
             ContextKey = "CadastroPedidos.Context.DBContext";
         }
 
-        protected override void Seed(Context.DBContext context)
+        protected override void Seed(DBContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -21,7 +21,7 @@ namespace CadastroPedidos.Migrations
             //  to avoid creating duplicate seed data.
 
             context.Pedidos.AddOrUpdate(
-                p => p.NomeCliente, new Pedido{ }
+                p => p.NomeCliente, new Models.Pedido{ }
                 );
         }
     }

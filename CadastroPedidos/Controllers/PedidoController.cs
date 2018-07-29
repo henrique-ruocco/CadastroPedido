@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using CadastroPedidos.Context;
-using CadastroPedidos.Models;
+using CadastroPedidosCore.Context;
+using CadastroPedidosCore.Models;
+using CadastroPedidosCore.Context;
 
 namespace CadastroPedidos.Controllers
 {
@@ -16,12 +12,7 @@ namespace CadastroPedidos.Controllers
         private DBContext db = new DBContext();
 
         // GET: Pedido
-        public ActionResult Index()
-        {
-            
-            return View(db.Pedidos.ToList());
-        }
-
+        public ActionResult Index() => View(db.Pedidos.ToList());
 
 
         // GET: Pedido/Details/5
