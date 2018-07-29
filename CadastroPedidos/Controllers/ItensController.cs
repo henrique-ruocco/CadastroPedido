@@ -38,7 +38,7 @@ namespace CadastroPedidos.Controllers
             item.Quantidade = 10;
 
             // Escrever o metodo correto. "factory method."
-            var i = Item.Novo(1, 2);
+            var i = Pedido.Novo(1, 2);
 
             _db.Itens.Add(item);
             _db.SaveChanges();

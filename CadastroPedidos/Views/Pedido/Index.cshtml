@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="table-peidos" class="table">
+<table id="table-pedidos" class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.NomeCliente)
@@ -27,7 +27,7 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            $('#table-peidos').DataTable({
+            $('#table-pedidos').DataTable({
                 "ajax": "",
                 "dataSrc": "",
                 "columns": [
